@@ -18,5 +18,22 @@ describe 'jenkins::default' do
     it 'converges successfully' do
       expect { chef_run }.to_not raise_error
     end
+
+    it 'add a apt_repository for jenkins' do
+      expect(chef_run).to add_apt_repository('jenkins')
+    end
+
+    it 'it installs package openjdk-8-jdk-headless' do
+      expect(chef_run).to install_package('openjdk-8-jdk-headless')
+    end
+
+    it 'it installs package jenkins' do
+      expect(chef_run).to install_package('jenkins')
+    end
+
+    it 'it starts service jenkins' do
+      expect(chef_run).to start_service('jenkins')
+    end
+
   end
 end

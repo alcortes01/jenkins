@@ -1,0 +1,33 @@
+---
+driver:
+  name: dokken
+  privileged: true # systemd/upstart
+  chef_version: latest
+
+transport:
+  name: dokken
+
+provisioner:
+  name: dokken
+
+verifier:
+  name: inspec
+
+platforms:
+  - name: ubuntu-16.04
+    driver:
+      image: ubuntu:16.04
+      pid_one_command: /bin/systemd
+      intermediate_instructions:
+        - RUN /usr/bin/apt-get update
+        - RUN /usr/bin/apt-get -y install net-tools apt-transport-https kmod iptables
+      ports:
+        - '8080:8080'
+suites:
+  - name: default
+    run_list:
+      - recipe[jenkins::default]
+    verifier:
+      inspec_tests:
+        - test/smoke/default
+    attributes:
