@@ -4,14 +4,13 @@
 #
 # Copyright:: 2017, The Authors, All Rights Reserved.
 
-
 if platform?('ubuntu')
 
   # Apt repository for Jenkins
   apt_repository 'jenkins' do
-    uri  'https://pkg.jenkins.io/debian-stable'
+    uri 'https://pkg.jenkins.io/debian-stable'
     distribution 'binary/'
-    key  'https://pkg.jenkins.io/debian-stable/jenkins.io.key'
+    key 'https://pkg.jenkins.io/debian-stable/jenkins.io.key'
   end
 
   # sudo apt-get install openjdk-8-jdk-headless

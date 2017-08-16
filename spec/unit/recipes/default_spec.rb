@@ -34,6 +34,5 @@ describe 'jenkins::default' do
     it 'it starts service jenkins' do
       expect(chef_run).to start_service('jenkins')
     end
-
   end
 end
