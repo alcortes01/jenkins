@@ -1,6 +1,6 @@
 # jenkins
 
-This chef cookbook installs Jenkins CI and Java JDK v8 from public repositories.
+This chef cookbook installs Jenkins CI and Java JDK v8 latest revisions from the official public repositories.
 
 ## Platforms
 * Ubuntu
