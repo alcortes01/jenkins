@@ -15,7 +15,7 @@ end
 # tracked.  A `View Issues` link will be displayed on this cookbook's page when
 # uploaded to a Supermarket.
 #
-#issues_url 'https://github.com/alcortes01/jenkins/issues'
+issues_url 'https://github.com/alcortes01/jenkins/issues'
 
 # The `source_url` points to the development reposiory for this cookbook.  A
 # `View Source` link will be displayed on this cookbook's page when uploaded to
