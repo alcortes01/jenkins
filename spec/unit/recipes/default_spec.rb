@@ -35,4 +35,38 @@ describe 'jenkins::default' do
       expect(chef_run).to start_service('jenkins')
     end
   end
+
+  context 'When all attributes are default, on an Centos 7.3.1611' do
+    let(:chef_run) do
+      # for a complete list of available platforms and versions see:
+      # https://github.com/customink/fauxhai/blob/master/PLATFORMS.md
+      runner = ChefSpec::ServerRunner.new(platform: 'centos', version: '7.3.1611')
+      runner.converge(described_recipe)
+    end
+
+    it 'converges successfully' do
+      expect { chef_run }.to_not raise_error
+    end
+
+    it 'adds Jenkins repository' do
+      expect(chef_run).to add_yum_repository('Jenkins')
+    end
+
+    it 'installs wget' do
+      expect(chef_run).to install_package('wget')
+    end
+
+    it 'installs openjdk' do
+      expect(chef_run).to install_package('java-1.8.0-openjdk-headless')
+    end
+
+    it 'installs jenkins' do
+      expect(chef_run).to install_package('jenkins')
+    end
+
+    it 'enables and starts jenkins service' do
+      expect(chef_run).to enable_service('jenkins')
+      expect(chef_run).to start_service('jenkins')
+    end
+  end
 end

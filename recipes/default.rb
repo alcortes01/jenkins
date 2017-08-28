@@ -25,3 +25,35 @@ if platform?('ubuntu')
   end
 
 end
+
+if platform?('centos')
+
+  # Yum repository for Jenkins
+  yum_repository 'Jenkins' do
+    description 'Jenkins stable repo'
+    baseurl 'http://pkg.jenkins-ci.org/redhat'
+    gpgkey 'https://jenkins-ci.org/redhat/jenkins-ci.org.key'
+    action :add
+  end
+
+  # Install wget
+  package 'wget' do
+    action :install
+  end
+
+  # Install openjdk-8
+  package 'java-1.8.0-openjdk-headless' do
+    action :install
+  end
+
+  # Install Jenkins
+  package 'jenkins' do
+    action :install
+  end
+
+  # Enable and start Jenkins
+  service 'jenkins' do
+    action [:enable, :start]
+  end
+
+end
