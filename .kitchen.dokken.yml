@@ -18,15 +18,11 @@ platforms:
     driver:
       image: dokken/ubuntu-16.04
       pid_one_command: /bin/systemd
-      ports:
-        - '8080:8080'
   - name: centos-7
     driver:
       image: dokken/centos-7
-      platform: rhel
+      # platform: rhel
       pid_one_command: /usr/lib/systemd/systemd
-      ports:
-        - '8080:8080'
 
 suites:
   - name: default
