@@ -16,13 +16,14 @@ verifier:
 platforms:
   - name: ubuntu-16.04
     driver:
-      image: ubuntu:16.04
+      image: dokken/ubuntu-16.04
       pid_one_command: /bin/systemd
-      intermediate_instructions:
-        - RUN /usr/bin/apt-get update
-        - RUN /usr/bin/apt-get -y install net-tools apt-transport-https kmod iptables
-      ports:
-        - '8080:8080'
+  - name: centos-7
+    driver:
+      image: dokken/centos-7
+      # platform: rhel
+      pid_one_command: /usr/lib/systemd/systemd
+
 suites:
   - name: default
     run_list:
