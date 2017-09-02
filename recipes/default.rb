@@ -4,7 +4,7 @@
 #
 # Copyright:: 2017, The Authors, All Rights Reserved.
 
-if platform?('ubuntu')
+if platform?('debian', 'ubuntu')
 
   # Apt repository for Jenkins
   apt_repository 'jenkins' do
@@ -26,7 +26,7 @@ if platform?('ubuntu')
 
 end
 
-if platform?('centos')
+if platform?('redhat', 'centos')
 
   # Yum repository for Jenkins
   yum_repository 'Jenkins' do
