@@ -6,6 +6,7 @@ This chef cookbook installs Jenkins CI and Java JDK v8 latest revisions from the
 
 ## Platforms
 * Ubuntu 16.04
+* Debian 9
 * CentOS 7
 
 ## Chef
