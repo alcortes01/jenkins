@@ -1,6 +1,6 @@
 [![Build Status](https://travis-ci.org/alcortes01/jenkins.svg?branch=master)](https://travis-ci.org/alcortes01/jenkins)
 
-# jenkins
+# Jenkins CI
 
 This chef cookbook installs Jenkins CI and Java JDK v8 latest revisions from the official public repositories.
 
