@@ -4,6 +4,8 @@
 #
 # Copyright:: 2017, The Authors, All Rights Reserved.
 
+include_recipe 'java'
+
 if platform?('debian', 'ubuntu')
 
   # Apt repository for Jenkins
@@ -11,17 +13,6 @@ if platform?('debian', 'ubuntu')
     uri 'https://pkg.jenkins.io/debian-stable'
     distribution 'binary/'
     key 'https://pkg.jenkins.io/debian-stable/jenkins.io.key'
-  end
-
-  # sudo apt-get install openjdk-8-jdk-headless
-  package 'openjdk-8-jdk-headless'
-
-  # sudo apt-get install jenkins
-  package 'jenkins'
-
-  # start jenkins
-  service 'jenkins' do
-    action :start
   end
 
 end
@@ -36,24 +27,14 @@ if platform?('redhat', 'centos')
     action :add
   end
 
-  # Install wget
-  package 'wget' do
-    action :install
-  end
+end
 
-  # Install openjdk-8
-  package 'java-1.8.0-openjdk-headless' do
-    action :install
-  end
+# Install Jenkins
+package 'jenkins' do
+  action :install
+end
 
-  # Install Jenkins
-  package 'jenkins' do
-    action :install
-  end
-
-  # Enable and start Jenkins
-  service 'jenkins' do
-    action [:enable, :start]
-  end
-
+# Enable and start Jenkins
+service 'jenkins' do
+  action [:enable, :start]
 end

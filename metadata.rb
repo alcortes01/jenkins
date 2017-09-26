@@ -7,7 +7,7 @@ long_description 'Installs/Configures jenkins'
 version '1.0.0'
 chef_version '>= 12.1' if respond_to?(:chef_version)
 
-%w(ubuntu debian).each do |os|
+%w(ubuntu debian centos redhat).each do |os|
   supports os
 end
 
@@ -22,3 +22,5 @@ issues_url 'https://github.com/alcortes01/jenkins/issues'
 # a Supermarket.
 #
 source_url 'https://github.com/alcortes01/jenkins'
+
+depends 'java'
