@@ -23,15 +23,12 @@ describe 'jenkins::default' do
       expect(chef_run).to add_apt_repository('jenkins')
     end
 
-    it 'it installs package openjdk-8-jdk-headless' do
-      expect(chef_run).to install_package('openjdk-8-jdk-headless')
-    end
-
     it 'it installs package jenkins' do
       expect(chef_run).to install_package('jenkins')
     end
 
     it 'it starts service jenkins' do
+      expect(chef_run).to enable_service('jenkins')
       expect(chef_run).to start_service('jenkins')
     end
   end
@@ -50,14 +47,6 @@ describe 'jenkins::default' do
 
     it 'adds Jenkins repository' do
       expect(chef_run).to add_yum_repository('Jenkins')
-    end
-
-    it 'installs wget' do
-      expect(chef_run).to install_package('wget')
-    end
-
-    it 'installs openjdk' do
-      expect(chef_run).to install_package('java-1.8.0-openjdk-headless')
     end
 
     it 'installs jenkins' do
