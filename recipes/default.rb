@@ -22,8 +22,8 @@ if platform?('redhat', 'centos')
   # Yum repository for Jenkins
   yum_repository 'Jenkins' do
     description 'Jenkins stable repo'
-    baseurl 'http://pkg.jenkins-ci.org/redhat'
-    gpgkey 'https://jenkins-ci.org/redhat/jenkins-ci.org.key'
+    baseurl 'http://pkg.jenkins.io/redhat'
+    gpgkey 'https://pkg.jenkins.io/redhat/jenkins.io.key'
     action :add
   end
 
