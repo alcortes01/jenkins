@@ -4,7 +4,7 @@
 
 # The Inspec reference, with examples and extensive documentation, can be
 # found at http://inspec.io/docs/reference/resources/
-
+sleep 10
 if os[:family] == 'debian'
   describe package('openjdk-8-jdk-headless') do
     it { should be_installed }
