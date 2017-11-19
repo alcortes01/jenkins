@@ -10,4 +10,4 @@ script:
   - export KITCHEN_YAML=.kitchen.dokken.yml || travis_terminate 1
   - /opt/chefdk/bin/chef exec kitchen create || travis_terminate 1
   - /opt/chefdk/bin/chef exec kitchen converge || travis_terminate 1
-  - /opt/chefdk/bin/chef exec kitchen verify || travis terminate 1
+  - /opt/chefdk/bin/chef exec kitchen verify || travis_terminate 1
