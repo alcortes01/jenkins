@@ -22,9 +22,9 @@ verifier:
   name: inspec
 
 platforms:
-  # - name: rhel-7
-  # - name: ubuntu-16.04
-  # - name: centos-7
+  - name: rhel-7
+  - name: ubuntu-16.04
+  - name: centos-7
 
 transport:
   ssh_key: ~/.ssh/25apr2017.pem
