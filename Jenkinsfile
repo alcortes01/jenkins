@@ -6,6 +6,12 @@ pipeline {
     }
   }
   stages {
+    stage ('env info') {
+      steps {
+        sh '/opt/chefdk/bin/chef --version'
+        sh '/opt/chefdk/bin/chef exec gem list'
+      }
+    }
     stage ('foodcritic') {
       steps {
         sh '/opt/chefdk/bin/chef exec foodcritic -C -t correctness .'
