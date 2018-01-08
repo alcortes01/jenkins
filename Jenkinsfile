@@ -27,4 +27,9 @@ pipeline {
       }
     }
   }
+  post {
+    always {
+      sh '/opt/chefdk/bin/chef exec kitchen destroy'
+    }
+  }
 }
