@@ -2,32 +2,38 @@ pipeline {
   agent {
     docker {
       image 'chef/chefdk'
+      args '-u root -v /var/run/docker.sock:/var/run/docker.sock'
     }
   }
   stages {
     stage ('foodcritic') {
       steps {
-        sh 'sudo /opt/chefdk/bin/chef exec foodcritic -C -t correctness .'
+        sh '/opt/chefdk/bin/chef exec foodcritic -C -t correctness .'
       }
     }
     stage ('cookstyle') {
       steps {
-        sh 'sudo /opt/chefdk/bin/chef exec cookstyle'
+        sh '/opt/chefdk/bin/chef exec cookstyle'
+      }
+    }
+    stage ('kitchen yaml file creation') {
+      steps {
+        sh 'export KITCHEN_YAML=.kitchen.dokken.yml'
       }
     }
     stage ('kitchen create') {
       steps {
-        sh 'sudo /opt/chefdk/bin/chef exec kitchen create'
+        sh '/opt/chefdk/bin/chef exec kitchen create'
       }
     }
     stage ('kitchen converge') {
       steps {
-        sh 'sudo /opt/chefdk/bin/chef exec kitchen converge'
+        sh '/opt/chefdk/bin/chef exec kitchen converge'
       }
     }
     stage ('kitchen verify') {
       steps {
-        sh 'sudo /opt/chefdk/bin/chef exec kitchen verify'
+        sh '/opt/chefdk/bin/chef exec kitchen verify'
       }
     }
   }
