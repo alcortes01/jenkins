@@ -23,6 +23,7 @@ pipeline {
         sh '/opt/chefdk/bin/chef exec kitchen create'
         sh '/opt/chefdk/bin/chef exec kitchen converge'
         sh '/opt/chefdk/bin/chef exec kitchen verify'
+        sh '/opt/chefdk/bin/chef exec kitchen destroy'
       }
     }
   }
