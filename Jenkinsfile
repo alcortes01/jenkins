@@ -1,5 +1,10 @@
 pipeline {
-  agent { docker 'chef/chefdk' }
+  agent {
+    docker {
+      image 'chef/chefdk'
+      args '--privileged'
+    }
+  }
   stages {
     stage ('foodcritic') {
       steps {
