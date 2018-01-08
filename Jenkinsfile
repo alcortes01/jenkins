@@ -9,6 +9,7 @@ pipeline {
     steps {
       sh '/opt/chefdk/bin/chef exec cookstyle'
     }
+  }
   stage ('kitchen create') {
     steps {
       sh '/opt/chefdk/bin/chef exec kitchen create'
