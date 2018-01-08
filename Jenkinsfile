@@ -2,33 +2,32 @@ pipeline {
   agent {
     docker {
       image 'chef/chefdk'
-      args '--privileged'
     }
   }
   stages {
     stage ('foodcritic') {
       steps {
-        sh '/opt/chefdk/bin/chef exec foodcritic -C -t correctness .'
+        sh 'sudo /opt/chefdk/bin/chef exec foodcritic -C -t correctness .'
       }
     }
     stage ('cookstyle') {
       steps {
-        sh '/opt/chefdk/bin/chef exec cookstyle'
+        sh 'sudo /opt/chefdk/bin/chef exec cookstyle'
       }
     }
     stage ('kitchen create') {
       steps {
-        sh '/opt/chefdk/bin/chef exec kitchen create'
+        sh 'sudo /opt/chefdk/bin/chef exec kitchen create'
       }
     }
     stage ('kitchen converge') {
       steps {
-        sh '/opt/chefdk/bin/chef exec kitchen converge'
+        sh 'sudo /opt/chefdk/bin/chef exec kitchen converge'
       }
     }
     stage ('kitchen verify') {
       steps {
-        sh '/opt/chefdk/bin/chef exec kitchen verify'
+        sh 'sudo /opt/chefdk/bin/chef exec kitchen verify'
       }
     }
   }
