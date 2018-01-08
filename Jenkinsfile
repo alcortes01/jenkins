@@ -16,23 +16,12 @@ pipeline {
         sh '/opt/chefdk/bin/chef exec cookstyle'
       }
     }
-    stage ('kitchen yaml file creation') {
+    stage ('kitchen test') {
       steps {
         sh 'cp .kitchen.dokken.yml .kitchen.local.yml'
-      }
-    }
-    stage ('kitchen create') {
-      steps {
+        sh '/opt/chefdk/bin/chef gem update kitchen-dokken'
         sh '/opt/chefdk/bin/chef exec kitchen create'
-      }
-    }
-    stage ('kitchen converge') {
-      steps {
         sh '/opt/chefdk/bin/chef exec kitchen converge'
-      }
-    }
-    stage ('kitchen verify') {
-      steps {
         sh '/opt/chefdk/bin/chef exec kitchen verify'
       }
     }
