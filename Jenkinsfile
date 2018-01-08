@@ -18,7 +18,7 @@ pipeline {
     }
     stage ('kitchen yaml file creation') {
       steps {
-        sh 'export KITCHEN_YAML=.kitchen.dokken.yml'
+        sh 'cp .kitchen.dokken.yml .kitchen.local.yml'
       }
     }
     stage ('kitchen create') {
