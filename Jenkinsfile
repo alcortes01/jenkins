@@ -11,7 +11,7 @@ pipeline {
         sh 'apt-get update'
         sh 'apt-get install -y sudo git build-essential apt-transport-https ca-certificates curl software-properties-common'
         sh 'apt-get install -y docker'
-        sh 'service docker start'
+        //sh 'service docker start'
         sh 'docker run --rm hello-world'
       }
     }
