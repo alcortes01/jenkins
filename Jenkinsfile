@@ -8,9 +8,9 @@ pipeline {
   stages {
     stage ('env update and info') {
       steps {
-        sh '/opt/chefdk/bin/chef --version'
-        sh '/opt/chefdk/bin/chef exec gem list'
-        sh 'yum -y install git docker'
+        sh 'apt-get update'
+        sh 'apt-get install -y sudo git build-essential apt-transport-https ca-certificates curl software-properties-common'
+        sh 'apt-get install -y docker'
         sh 'service docker start'
         sh 'docker run --rm hello-world'
       }
@@ -30,7 +30,6 @@ pipeline {
         sh 'cp .kitchen.dokken.yml .kitchen.local.yml'
         sh '/opt/chefdk/bin/chef gem update kitchen-dokken'
         sh '/opt/chefdk/bin/chef exec kitchen create'
-        sh 'sleep 10'
         sh '/opt/chefdk/bin/chef exec kitchen converge --log-level debug'
         sh '/opt/chefdk/bin/chef exec kitchen verify'
         sh '/opt/chefdk/bin/chef exec kitchen destroy'
