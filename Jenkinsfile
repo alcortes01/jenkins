@@ -6,10 +6,13 @@ pipeline {
     }
   }
   stages {
-    stage ('env info') {
+    stage ('env update and info') {
       steps {
         sh '/opt/chefdk/bin/chef --version'
         sh '/opt/chefdk/bin/chef exec gem list'
+        sh 'yum -y install git docker'
+        sh 'service docker start'
+        sh 'docker run --rm hello-world'
       }
     }
     stage ('foodcritic') {
