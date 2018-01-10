@@ -2,7 +2,7 @@ pipeline {
     agent {
         docker {
             reuseNode false
-            args '-u root -v /var/run/docker.sock:/var/run/docker.sock'
+//            args '-u root -v /var/run/docker.sock:/var/run/docker.sock'
             image 'chef/chefdk'
         }
     }
@@ -57,7 +57,7 @@ apt-get install -y docker-ce'''
                         sh '''KITCHEN_LOCAL_YAML=.kitchen.dokken.yml /opt/chefdk/embedded/bin/kitchen test centos-7'''
                     },
                     "debian": {
-                        sh '''KITCHEN_LOCAL_YAML=.kitchen.dokken.yml /opt/chefdk/embedded/bin/kitchen test debian-16.04'''
+                        sh '''KITCHEN_LOCAL_YAML=.kitchen.dokken.yml /opt/chefdk/embedded/bin/kitchen test ubuntu-16.04'''
                     },
 //                    "fedora": {
 //                        sh '''KITCHEN_LOCAL_YAML=.kitchen.dokken.yml /opt/chefdk/embedded/bin/kitchen test fedora'''
