@@ -49,10 +49,11 @@ pipeline {
       steps {
         sh 'cp .kitchen.dokken.yml .kitchen.local.yml'
         sh '/opt/chefdk/bin/chef gem update kitchen-dokken'
-        sh '/opt/chefdk/bin/chef exec kitchen create'
-        sh '/opt/chefdk/bin/chef exec kitchen converge --log-level debug'
-        sh '/opt/chefdk/bin/chef exec kitchen verify'
-        sh '/opt/chefdk/bin/chef exec kitchen destroy'
+        sh '/opt/chefdk/bin/chef exec kitchen test'
+//        sh '/opt/chefdk/bin/chef exec kitchen create'
+//        sh '/opt/chefdk/bin/chef exec kitchen converge --log-level debug'
+//        sh '/opt/chefdk/bin/chef exec kitchen verify'
+//        sh '/opt/chefdk/bin/chef exec kitchen destroy'
       }
     }
   }
