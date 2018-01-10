@@ -1,6 +1,7 @@
 pipeline {
   agent {
     docker {
+      reuseNode false
       image 'chef/chefdk'
       args '-u root -v /var/run/docker.sock:/var/run/docker.sock'
     }
