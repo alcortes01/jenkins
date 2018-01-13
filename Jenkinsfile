@@ -2,6 +2,7 @@ pipeline {
   agent {
     docker {
       image 'centos:7'
+      args '-u root'
     }
   }
 //  environment {
