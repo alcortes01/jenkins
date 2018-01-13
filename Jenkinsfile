@@ -12,7 +12,7 @@ pipeline {
   stages {
     stage('Dependencies') {
       steps {
-        sh 'curl https://omnitruck.chef.io/install.sh | sudo bash -s -- -c current -P chefdk'
+        sh 'curl https://omnitruck.chef.io/install.sh | bash -s -- -c current -P chefdk'
         sh 'eval \$(chef shell-init bash) >> ~/.bash_profile'
         sh 'chef verify'
       }
