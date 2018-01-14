@@ -2,7 +2,7 @@ pipeline {
   agent {
     docker {
       image 'centos/systemd'
-      args '-u root'
+      args '-u root -v /sys/fs/cgroup:/sys/fs/cgroup:ro'
     }
   }
 //  environment {
