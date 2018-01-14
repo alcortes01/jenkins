@@ -5,11 +5,11 @@ pipeline {
       args '-u root'
     }
   }
-//  environment {
-//    machine_port = '22'
-//    use_user = ''
-//    use_password = ''
-//  }
+  environment {
+    machine_port = '22'
+//    machine_user = ''
+//    machine_password = ''
+  }
   stages {
     stage('Dependencies') {
       steps {
