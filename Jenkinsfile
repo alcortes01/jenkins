@@ -1,7 +1,7 @@
 pipeline {
   agent {
     docker {
-      image 'centos:systemd'
+      image 'centos/systemd'
       args '-u root'
     }
   }
