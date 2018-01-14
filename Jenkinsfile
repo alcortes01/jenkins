@@ -5,17 +5,19 @@ pipeline {
       args '-u root'
     }
   }
-  environment {
-    machine_port = '22'
+//  environment {
+//    machine_port = '22'
 //    use_user = ''
 //    use_password = ''
-  }
+//  }
   stages {
     stage('Dependencies') {
       steps {
         sh 'curl https://omnitruck.chef.io/install.sh | bash -s -- -c current -P chefdk'
         sh 'eval chef shell-init bash'
         sh 'chef verify'
+        sh 'yum install -y openssh-server'
+        sh '/etc/init.d/sshd start'
       }
     }
     stage('Verify dependencies') {
