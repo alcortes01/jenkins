@@ -16,7 +16,7 @@ pipeline {
         sh 'curl https://omnitruck.chef.io/install.sh | bash -s -- -c current -P chefdk'
         sh 'eval chef shell-init bash'
         sh 'yum install -y openssh-server'
-        sh '/usr/sbin/sshd start'
+        sh '/usr/sbin/sshd -d'
       }
     }
     stage('Verify dependencies') {
