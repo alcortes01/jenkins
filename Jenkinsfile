@@ -1,8 +1,8 @@
 pipeline {
   agent {
     docker {
-      image 'centos/systemd'
-      args '-u root -v /sys/fs/cgroup:/sys/fs/cgroup:ro --privileged'
+      image 'centos:7'
+      args '-u root'
     }
   }
 //  environment {
@@ -13,7 +13,8 @@ pipeline {
   stages {
     stage('Dependencies') {
       steps {
-        sh '/usr/sbin/init'
+        sh 'yum -y install curl emacs-nox gnupg2 initscripts iptables iputils lsof nc net-tools nmap openssl procps strace systemd-sysv tcpdump telnet vim-minimal wget which'
+        sh '/usr/lib/systemd/systemd'
         sh 'curl https://omnitruck.chef.io/install.sh | bash -s -- -c current -P chefdk'
         sh 'eval chef shell-init bash'
         sh 'yum install -y openssh-server'
