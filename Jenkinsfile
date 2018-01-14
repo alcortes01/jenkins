@@ -1,7 +1,7 @@
 pipeline {
   agent {
     docker {
-      image 'centos:7'
+      image 'centos:systemd'
       args '-u root'
     }
   }
@@ -16,8 +16,7 @@ pipeline {
         sh 'curl https://omnitruck.chef.io/install.sh | bash -s -- -c current -P chefdk'
         sh 'eval chef shell-init bash'
         sh 'yum install -y openssh-server'
-        sh 'ssh-keygen -A'
-        sh '/usr/sbin/sshd -d'
+        sh 'systemctl start sshd'
       }
     }
     stage('Verify dependencies') {
