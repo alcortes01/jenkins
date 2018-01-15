@@ -1,7 +1,7 @@
 pipeline {
   agent {
     docker {
-      image 'centos7-systemd'
+      image 'centos:7'
       args '-u root'
     }
   }
@@ -38,6 +38,7 @@ pipeline {
         sh 'ssh-keygen -t rsa -N "" -f /root/.ssh/id_rsa'
         sh 'cat /root/.ssh/id_rsa.pub > /root/.ssh/authorized_keys'
         sh '/usr/sbin/sshd &'
+        sh 'yum install sudo'
       }
     }
 //    stage('Verify dependencies') {
