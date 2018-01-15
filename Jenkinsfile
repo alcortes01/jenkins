@@ -38,7 +38,7 @@ pipeline {
         sh 'ssh-keygen -t rsa -N "" -f /root/.ssh/id_rsa'
         sh 'cat /root/.ssh/id_rsa.pub > /root/.ssh/authorized_keys'
         sh '/usr/sbin/sshd &'
-        sh 'yum install sudo'
+        sh 'yum install -y sudo'
       }
     }
 //    stage('Verify dependencies') {
