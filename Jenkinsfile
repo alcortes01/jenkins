@@ -69,4 +69,9 @@ pipeline {
 //      }
 //    }
   }
+  post {
+    failure {
+      sh 'kitchen diagnose --all'
+    }
+  }
 }
