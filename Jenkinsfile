@@ -53,7 +53,7 @@ pipeline {
       steps {
         script {
           env.CONTINUE = input message: 'Continue?',
-          ok: 'Continue!',
+          ok: 'Continue!'
 //          parameters: [choice(name: 'CONTINUE', choices: 'patch\nminor\nmajor', description: 'What is the release scope?')]
         }
         echo "flag: ${env.CONTINUE}"
