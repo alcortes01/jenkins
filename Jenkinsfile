@@ -10,13 +10,13 @@ pipeline {
 //    machine_user = ''
 //    machine_password = ''
   }
-  parameters {
-    booleanParam(
-      defaultValue: true,
-      description: 'choose true or false to continue',
-      name: 'userFlag'
-    )
-  }
+//  parameters {
+//    booleanParam(
+//      defaultValue: true,
+//      description: 'choose true or false to continue',
+//      name: 'userFlag'
+//    )
+//  }
 //  parameters {
 //    string(
 //      defaultValue: "TEST",
@@ -49,7 +49,12 @@ pipeline {
 //        anyOf { branch 'master'; branch 'staging'; branch 'production' }
 //      }
       steps {
-        echo "flag: ${params.userFlag}"
+        script {
+          env.CONTINUE = input message: 'Continue?',
+          ok: 'Release!',
+          parameters: [choice(name: 'CONTINUE', choices: 'patch\nminor\nmajor', description: 'What is the release scope?')]
+        }
+        echo "flag: ${env.CONTINUE}"
         sh 'KITCHEN_LOCAL_YAML=.kitchen.jenkins.yml kitchen test centos-7'
       }
     }
