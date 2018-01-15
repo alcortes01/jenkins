@@ -36,6 +36,7 @@ pipeline {
         sh 'yum install -y openssh-server'
         sh 'ssh-keygen -A'
         sh 'ssh-keygen -t rsa -N "" -f /root/.ssh/id_rsa'
+        sh 'cat /root/.ssh/id_rsa.pub > /root/.ssh/authorized_keys'
         sh '/usr/sbin/sshd &'
       }
     }

@@ -6,6 +6,7 @@ driver:
   port: <%= ENV["machine_port"] %>
   username: <%= ENV["machine_user"] %>
   password: <%= ENV["machine_pass"] %>
+  ssh_key: '~/.ssh/id_rsa'
 
 provisioner:
   name: chef_zero
