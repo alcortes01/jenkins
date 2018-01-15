@@ -33,7 +33,7 @@ pipeline {
       steps {
         sh 'curl https://omnitruck.chef.io/install.sh | bash -s -- -c current -P chefdk'
         sh 'eval chef shell-init bash'
-        sh 'yum install -y openssh-server'
+        sh 'yum install -y openssh-server openssh-clients'
         sh 'ssh-keygen -A'
         sh 'ssh-keygen -t rsa -N "" -f /root/.ssh/id_rsa'
         sh 'cat /root/.ssh/id_rsa.pub > /root/.ssh/authorized_keys'
