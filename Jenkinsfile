@@ -1,7 +1,7 @@
 pipeline {
   agent {
     docker {
-      image 'centos:7'
+      image 'centos7-systemd'
       args '-u root'
     }
   }
@@ -40,12 +40,12 @@ pipeline {
         sh '/usr/sbin/sshd &'
       }
     }
-    stage('Verify dependencies') {
-      steps {
-        sh 'chef verify'
-        sh 'KITCHEN_LOCAL_YAML=.kitchen.jenkins.yml kitchen list'
-      }
-    }
+//    stage('Verify dependencies') {
+//      steps {
+//        sh 'chef verify'
+//        sh 'KITCHEN_LOCAL_YAML=.kitchen.jenkins.yml kitchen list'
+//      }
+//    }
     stage('Run test-kitchen') {
 //      when {
 //        anyOf { branch 'master'; branch 'staging'; branch 'production' }
