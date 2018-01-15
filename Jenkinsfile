@@ -7,7 +7,7 @@ pipeline {
   }
   environment {
     machine_port = '22'
-//    machine_user = ''
+    machine_user = 'root'
 //    machine_password = ''
   }
 //  parameters {
