@@ -5,6 +5,7 @@ driver:
   reset_command: "exit 0"
   port: 22
   username: root
+  use_sudo: false
   # port: <%= ENV["machine_port"] %>
   # username: <%= ENV["machine_user"] %>
   # password: <%= ENV["machine_pass"] %>
