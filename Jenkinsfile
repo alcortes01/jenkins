@@ -35,6 +35,7 @@ pipeline {
         sh 'eval chef shell-init bash'
         sh 'yum install -y openssh-server'
         sh 'ssh-keygen -A'
+        sh 'ssh-keygen -t rsa -N "" -f /root/.ssh/id_rsa'
         sh '/usr/sbin/sshd &'
       }
     }
@@ -51,8 +52,8 @@ pipeline {
       steps {
         script {
           env.CONTINUE = input message: 'Continue?',
-          ok: 'Release!',
-          parameters: [choice(name: 'CONTINUE', choices: 'patch\nminor\nmajor', description: 'What is the release scope?')]
+          ok: 'Continue!',
+//          parameters: [choice(name: 'CONTINUE', choices: 'patch\nminor\nmajor', description: 'What is the release scope?')]
         }
         echo "flag: ${env.CONTINUE}"
         sh 'KITCHEN_LOCAL_YAML=.kitchen.jenkins.yml kitchen test centos-7'
