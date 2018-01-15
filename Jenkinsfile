@@ -49,7 +49,7 @@ pipeline {
 //        anyOf { branch 'master'; branch 'staging'; branch 'production' }
 //      }
       steps {
-        sh 'echo ${params.userFlag}"
+        sh "echo ${params.userFlag}"
         sh 'KITCHEN_LOCAL_YAML=.kitchen.jenkins.yml kitchen test centos-7'
       }
     }
