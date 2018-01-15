@@ -3,9 +3,11 @@ driver:
   name: proxy
   host: localhost
   reset_command: "exit 0"
-  port: <%= ENV["machine_port"] %>
-  username: <%= ENV["machine_user"] %>
-  password: <%= ENV["machine_pass"] %>
+  port: 22
+  username: root
+  # port: <%= ENV["machine_port"] %>
+  # username: <%= ENV["machine_user"] %>
+  # password: <%= ENV["machine_pass"] %>
   ssh_key: '~/.ssh/id_rsa'
 
 provisioner:
