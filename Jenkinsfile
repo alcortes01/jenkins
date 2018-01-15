@@ -10,6 +10,24 @@ pipeline {
 //    machine_user = ''
 //    machine_password = ''
   }
+  parameters {
+    booleanParam(
+      defaultValue: true,
+      description: 'choose true or false to continue',
+      name: 'userFlag'
+    )
+  }
+//  parameters {
+//    string(
+//      defaultValue: "TEST",
+//      description: "What environment?",
+//      name: 'userFlag'
+//    )
+//    choice(
+//      choices: 'US-EAST-1\nUS-WEST-2',
+//      description: 'What AWS region?',
+//      name: 'region')
+//  }
   stages {
     stage('Dependencies') {
       steps {
@@ -31,6 +49,7 @@ pipeline {
 //        anyOf { branch 'master'; branch 'staging'; branch 'production' }
 //      }
       steps {
+        sh 'echo ${params.userFlag}"
         sh 'KITCHEN_LOCAL_YAML=.kitchen.jenkins.yml kitchen test centos-7'
       }
     }
