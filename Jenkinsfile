@@ -1,7 +1,7 @@
 pipeline {
   agent {
     docker {
-      image 'centos:7'
+      image 'dokken/centos-7'
       args '-u root'
     }
   }
