@@ -5,11 +5,11 @@ pipeline {
       args '-u root'
     }
   }
-  environment {
-    machine_port = '22'
-    machine_user = 'root'
+//  environment {
+//    machine_port = '22'
+//    machine_user = 'root'
 //    machine_password = ''
-  }
+//  }
 //  parameters {
 //    booleanParam(
 //      defaultValue: true,
