@@ -20,14 +20,18 @@ pipeline {
         sh 'yum install -y sudo'
       }
     }
-    stage('Foodcritic') {
-      steps {
-        sh '/opt/chefdk/bin/chef exec foodcritic -C -t correctness .'
-      }
-    }
-    stage('Cookstyle') {
-      steps {
-        sh '/opt/chefdk/bin/chef exec cookstyle'
+    stage('Run Linting tests') {
+      parallel {
+        stage('Foodcritic') {
+          steps {
+            sh '/opt/chefdk/bin/chef exec foodcritic -C -t correctness .'
+          }
+        }
+        stage('Cookstyle') {
+          steps {
+            sh '/opt/chefdk/bin/chef exec cookstyle'
+          }
+        }
       }
     }
     stage('Integration Test with Kitchen') {
@@ -37,7 +41,10 @@ pipeline {
           ok: 'Continue!'
         }
         echo "flag: ${env.CONTINUE}"
-        sh 'KITCHEN_LOCAL_YAML=.kitchen.jenkins.yml kitchen test rhel-7'
+        sh 'KITCHEN_LOCAL_YAML=.kitchen.jenkins.yml kitchen create rhel-7'
+        sh 'KITCHEN_LOCAL_YAML=.kitchen.jenkins.yml kitchen converge rhel-7'
+        sh 'KITCHEN_LOCAL_YAML=.kitchen.jenkins.yml kitchen verify rhel-7'
+        sh 'KITCHEN_LOCAL_YAML=.kitchen.jenkins.yml kitchen destroy rhel-7'
       }
     }
   }
