@@ -37,7 +37,7 @@ pipeline {
           ok: 'Continue!'
         }
         echo "flag: ${env.CONTINUE}"
-        sh 'KITCHEN_LOCAL_YAML=.kitchen.jenkins.yml kitchen test centos-7'
+        sh 'KITCHEN_LOCAL_YAML=.kitchen.jenkins.yml kitchen test rhel-7'
       }
     }
   }
