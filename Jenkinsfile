@@ -29,7 +29,7 @@ pipeline {
 //      name: 'region')
 //  }
   stages {
-    stage('Dependencies') {
+    stage('Install Dependencies') {
       steps {
         sh 'curl https://omnitruck.chef.io/install.sh | bash -s -- -c current -P chefdk'
         sh 'eval chef shell-init bash'
@@ -47,7 +47,17 @@ pipeline {
 //        sh 'KITCHEN_LOCAL_YAML=.kitchen.jenkins.yml kitchen list'
 //      }
 //    }
-    stage('Run test-kitchen') {
+    stage('Foodcritic') {
+      steps {
+        sh '/opt/chefdk/bin/chef exec foodcritic -C -t correctness .'
+      }
+    }
+    stage('Cookstyle') {
+      steps {
+        sh '/opt/chefdk/bin/chef exec cookstyle'
+      }
+    }
+    stage('Integration Test with Kitchen') {
 //      when {
 //        anyOf { branch 'master'; branch 'staging'; branch 'production' }
 //      }
