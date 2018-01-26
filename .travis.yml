@@ -1,9 +1,11 @@
 sudo: required
+dist: trusty
 services:
   - docker
-language: ruby
+#language: ruby
 before_install:
   - curl https://omnitruck.chef.io/install.sh | sudo bash -s -- -c current -P chefdk
+  - echo 'eval "$(chef shell-init bash)"' >> ~/.bash_profile
 script:
   - /opt/chefdk/bin/chef exec foodcritic -C -t correctness . || travis_terminate 1
   - /opt/chefdk/bin/chef exec cookstyle || travis_terminate 1
