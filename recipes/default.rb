@@ -8,6 +8,9 @@ include_recipe 'java'
 
 if platform?('debian', 'ubuntu')
 
+  # Required by apt-get
+  package 'apt-transport-https'
+
   # Apt repository for Jenkins
   apt_repository 'jenkins' do
     uri 'https://pkg.jenkins.io/debian-stable'
