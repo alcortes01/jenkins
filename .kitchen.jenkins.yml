@@ -1,0 +1,35 @@
+---
+driver:
+  name: proxy
+  host: localhost
+  reset_command: "exit 0"
+  port: 22
+  username: root
+  use_sudo: false
+  # port: <%= ENV["machine_port"] %>
+  # username: <%= ENV["machine_user"] %>
+  # password: <%= ENV["machine_pass"] %>
+  ssh_key: '~/.ssh/id_rsa'
+
+provisioner:
+  name: chef_zero
+  # You may wish to disable always updating cookbooks in CI or other testing environments.
+  # For example:
+  #   always_update_cookbooks: <%= !ENV['CI'] %>
+  always_update_cookbooks: true
+
+verifier:
+  name: inspec
+
+platforms:
+#  - name: ubuntu-16.04
+  - name: rhel-7
+
+suites:
+  - name: default
+    run_list:
+      - recipe[jenkins::default]
+    verifier:
+      inspec_tests:
+        - test/smoke/default
+    attributes:
