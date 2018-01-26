@@ -4,8 +4,6 @@
 #
 # Copyright:: 2017, The Authors, All Rights Reserved.
 
-
-
 if platform?('debian', 'ubuntu')
 
   # Required by apt-get
