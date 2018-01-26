@@ -4,7 +4,7 @@
 #
 # Copyright:: 2017, The Authors, All Rights Reserved.
 
-include_recipe 'java'
+
 
 if platform?('debian', 'ubuntu')
 
@@ -32,6 +32,8 @@ if platform?('redhat', 'centos')
   end
 
 end
+
+include_recipe 'java'
 
 # Install Jenkins
 package 'jenkins' do
