@@ -7,14 +7,14 @@
 if platform?('debian', 'ubuntu')
 
   # Required by apt-get
-  package 'apt-transport-https'
-  package 'ca-certificates'
+  #cpackage 'apt-transport-https'
+  #cpackage 'ca-certificates'
 
   # Apt repository for Jenkins
   apt_repository 'jenkins' do
-    uri 'https://pkg.jenkins.io/debian-stable'
+    uri 'http://pkg.jenkins.io/debian-stable'
     distribution 'binary/'
-    key 'https://pkg.jenkins.io/debian-stable/jenkins.io.key'
+    key 'http://pkg.jenkins.io/debian-stable/jenkins.io.key'
   end
 
 end
@@ -25,7 +25,7 @@ if platform?('redhat', 'centos')
   yum_repository 'Jenkins' do
     description 'Jenkins stable repo'
     baseurl 'http://pkg.jenkins.io/redhat'
-    gpgkey 'https://pkg.jenkins.io/redhat/jenkins.io.key'
+    gpgkey 'http://pkg.jenkins.io/redhat/jenkins.io.key'
     action :add
   end
 
