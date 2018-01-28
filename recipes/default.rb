@@ -8,7 +8,7 @@ if platform?('debian', 'ubuntu')
 
   # Required by apt-get
   # package 'apt-transport-https'
-  # package 'ca-certificates'
+  package 'ca-certificates'
 
   # Apt repository for Jenkins
   apt_repository 'jenkins' do
