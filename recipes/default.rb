@@ -12,9 +12,11 @@ if platform?('debian', 'ubuntu')
 
   # Apt repository for Jenkins
   apt_repository 'jenkins' do
-    uri 'http://pkg.jenkins.io/debian-stable'
+    # uri 'http://pkg.jenkins.io/debian-stable'
+    uri 'http://pkg.jenkins-ci.org/debian'
     distribution 'binary/'
-    key 'http://pkg.jenkins.io/debian-stable/jenkins.io.key'
+    key 'http://pkg.jenkins-ci.org/debian/jenkins-ci.org.key'
+    # key 'http://pkg.jenkins.io/debian-stable/jenkins.io.key'
   end
 
 end
