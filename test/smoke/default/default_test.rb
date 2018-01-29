@@ -16,7 +16,7 @@ if os[:family] == 'debian'
     it { should be_listening }
   end
 elsif os[:family] == 'redhat'
-  describe package('java-1.8.0-openjdk') do
+  describe package('java-1.8.0-openjdk-headless') do
     it { should be_installed }
   end
   describe package('jenkins') do
