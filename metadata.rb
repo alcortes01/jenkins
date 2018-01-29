@@ -22,5 +22,3 @@ issues_url 'https://github.com/alcortes01/jenkins/issues'
 # a Supermarket.
 #
 source_url 'https://github.com/alcortes01/jenkins'
-
-depends 'java'

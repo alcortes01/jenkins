@@ -22,6 +22,8 @@ end
 
 if platform?('redhat', 'centos')
 
+  # Required by jenkins
+  package 'java'
   # Yum repository for Jenkins
   yum_repository 'Jenkins' do
     description 'Jenkins stable repo'
