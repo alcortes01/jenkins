@@ -6,7 +6,7 @@
 # found at http://inspec.io/docs/reference/resources/
 sleep 10
 if os[:family] == 'debian'
-  describe package('openjdk-8-jdk-headless') do
+  describe package('default-jre') do
     it { should be_installed }
   end
   describe package('jenkins') do
@@ -16,7 +16,7 @@ if os[:family] == 'debian'
     it { should be_listening }
   end
 elsif os[:family] == 'redhat'
-  describe package('java-1.8.0-openjdk-headless') do
+  describe package('java-1.8.0-openjdk') do
     it { should be_installed }
   end
   describe package('jenkins') do
