@@ -4,7 +4,7 @@ maintainer_email 'alcortes01@gmail.com'
 license 'MIT'
 description 'Installs/Configures jenkins'
 long_description 'Installs/Configures jenkins'
-version '1.0.0'
+version '1.1.0'
 chef_version '>= 12.1' if respond_to?(:chef_version)
 
 %w(ubuntu debian centos redhat).each do |os|
