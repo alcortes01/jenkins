@@ -6,9 +6,8 @@
 
 if platform?('debian', 'ubuntu')
 
-  # Required by apt-get
-  # package 'apt-transport-https'
-  package 'ca-certificates'
+  # Required by Jenkins
+  package 'default-jre'
 
   # Apt repository for Jenkins
   apt_repository 'jenkins' do
@@ -33,7 +32,7 @@ if platform?('redhat', 'centos')
 
 end
 
-include_recipe 'java'
+# include_recipe 'java'
 
 # Install Jenkins
 package 'jenkins' do
