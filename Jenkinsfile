@@ -37,17 +37,17 @@ pipeline {
     }
     stage('Integration Test: Kitchen Create') {
       steps {
-        sh 'KITCHEN_LOCAL_YAML=.kitchen.jenkins.yml kitchen create rhel-7'
+        sh 'KITCHEN_LOCAL_YAML=.kitchen.proxy.yml kitchen create rhel-7'
       }
     }
     stage('Integration Test: Kitchen Converge') {
       steps {
-        sh 'KITCHEN_LOCAL_YAML=.kitchen.jenkins.yml kitchen converge rhel-7'
+        sh 'KITCHEN_LOCAL_YAML=.kitchen.proxy.yml kitchen converge rhel-7'
       }
     }
     stage('Integration Test: Kitchen Verify') {
       steps {
-        sh 'KITCHEN_LOCAL_YAML=.kitchen.jenkins.yml kitchen verify rhel-7'
+        sh 'KITCHEN_LOCAL_YAML=.kitchen.proxy.yml kitchen verify rhel-7'
       }
     }
     stage('Integration Test: Kitchen Destroy') {
@@ -57,7 +57,7 @@ pipeline {
           ok: 'Continue!'
         }
         echo "flag: ${env.CONTINUE}"
-        sh 'KITCHEN_LOCAL_YAML=.kitchen.jenkins.yml kitchen destroy rhel-7'
+        sh 'KITCHEN_LOCAL_YAML=.kitchen.proxy.yml kitchen destroy rhel-7'
       }
     }
   }
