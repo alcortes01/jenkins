@@ -23,6 +23,7 @@ end
 if platform?('redhat', 'centos')
 
   # Required by jenkins
+  package 'fontconfig'
   package 'java-1.8.0-openjdk-headless'
   # Yum repository for Jenkins
   yum_repository 'Jenkins' do
