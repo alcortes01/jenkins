@@ -5,7 +5,9 @@
 # Copyright:: 2017, The Authors, All Rights Reserved.
 
 if platform?('debian', 'ubuntu')
-
+  # Apt repo update
+  apt_update
+  
   # Required by Jenkins
   package 'default-jre'
 
