@@ -8,8 +8,8 @@ before_install:
   - eval "$(chef shell-init bash)"
 script:
   - chef exec foodcritic -C -t correctness . || travis_terminate 1
-  - /opt/chefdk/bin/chef exec cookstyle || travis_terminate 1
+  - chef exec cookstyle || travis_terminate 1
   - export KITCHEN_YAML=.kitchen.dokken.yml || travis_terminate 1
-  - /opt/chefdk/bin/chef exec kitchen create || travis_terminate 1
-  - /opt/chefdk/bin/chef exec kitchen converge -l debug || travis_terminate 1
-  - /opt/chefdk/bin/chef exec kitchen verify || travis_terminate 1
+  - chef exec kitchen create || travis_terminate 1
+  - chef exec kitchen converge -l debug || travis_terminate 1
+  - chef exec kitchen verify || travis_terminate 1
