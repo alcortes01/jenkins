@@ -10,7 +10,7 @@ if platform?('debian', 'ubuntu')
   
   # Required by Jenkins
   package 'default-jre'
-
+  
   # Apt repository for Jenkins
   apt_repository 'jenkins' do
     # uri 'http://pkg.jenkins.io/debian-stable'
