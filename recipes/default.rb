@@ -6,7 +6,7 @@
 
 if platform?('debian', 'ubuntu')
   # Apt repo update
-  apt_update  
+  apt_update
   # Required by Jenkins
   package 'default-jre'
   # Apt repository for Jenkins
@@ -17,11 +17,9 @@ if platform?('debian', 'ubuntu')
     key 'http://pkg.jenkins-ci.org/debian/jenkins-ci.org.key'
     # key 'http://pkg.jenkins.io/debian-stable/jenkins.io.key'
   end
-
 end
 
 if platform?('redhat', 'centos')
-
   # Required by jenkins
   package 'fontconfig'
   package 'java-1.8.0-openjdk-headless'
@@ -32,7 +30,6 @@ if platform?('redhat', 'centos')
     gpgkey 'http://pkg.jenkins.io/redhat/jenkins.io.key'
     action :add
   end
-
 end
 
 # include_recipe 'java'
